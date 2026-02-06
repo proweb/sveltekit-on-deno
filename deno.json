@@ -1,0 +1,35 @@
+{
+	"nodeModulesDir": "auto",
+	"tasks": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"test": "vitest",
+		"lint": "deno lint && prettier --check .",
+		"format": "deno fmt && prettier --write ."
+	},
+	"imports": {
+		"uikit": "npm:uikit@^3.23.4",
+		"sveltekit-adapter-deno": "npm:sveltekit-adapter-deno@^0.16.1",
+		"@fontsource/fira-mono": "npm:@fontsource/fira-mono@^5.2.5",
+		"@neoconfetti/svelte": "npm:@neoconfetti/svelte@^2.2.2",
+		"@sveltejs/adapter-auto": "npm:@sveltejs/adapter-auto@^6.0.0",
+		"@sveltejs/kit": "npm:@sveltejs/kit@^2.20.2",
+		"@sveltejs/vite-plugin-svelte": "npm:@sveltejs/vite-plugin-svelte@^5.0.3",
+		"@types/node": "npm:@types/node@^22.13.14",
+		"@typescript-eslint/eslint-plugin": "npm:@typescript-eslint/eslint-plugin@^8.28.0",
+		"@typescript-eslint/parser": "npm:@typescript-eslint/parser@^8.28.0",
+		"eslint": "npm:eslint@^9.23.0",
+		"eslint-config-prettier": "npm:eslint-config-prettier@^10.1.1",
+		"eslint-plugin-svelte": "npm:eslint-plugin-svelte@^3.3.3",
+		"prettier": "npm:prettier@^3.5.3",
+		"prettier-plugin-svelte": "npm:prettier-plugin-svelte@^3.3.3",
+		"svelte": "npm:svelte@^5.25.3",
+		"svelte-check": "npm:svelte-check@^4.1.5",
+		"tslib": "npm:tslib@^2.8.1",
+		"typescript": "npm:typescript@^5.8.3",
+		"vite": "npm:vite@^6.3.0",
+		"vitest": "npm:vitest@^3.1.1"
+	}
+}

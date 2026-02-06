@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms';
-	export let data;
-	$: entries = data.entries || [];
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
+	let entries = $derived(data.entries || []);
 </script>
 
 <svelte:head>
@@ -23,7 +25,7 @@
 		</div>
 		<div class="uk-margin">
 			<label for="message" class="uk-form-label">Что хотите сказать:</label>
-			<textarea name="message" id="message" class="uk-textarea" required rows="10"></textarea>	
+			<textarea name="message" id="message" class="uk-textarea" required rows="10"></textarea>
 		</div>
 		<div class="uk-margin">
 			<button type="submit" class="uk-button uk-button-primary">Отправить</button>
@@ -32,8 +34,10 @@
 	<h2>Entries:</h2>
 	<ol class="uk-list uk-list-divider">
 		{#each entries as entry}
-			<li>Персона: {entry.name} c email: {entry.email}.<br/> Оставил сообщение: <pre>{entry.message}</pre>
+			<li>
+				Персона: {entry.name} c email: {entry.email}.<br /> Оставил сообщение:
+				<pre>{entry.message}</pre>
 			</li>
 		{/each}
-		</ol>
+	</ol>
 </section>
