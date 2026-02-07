@@ -4,8 +4,8 @@
 </svelte:head>
 
 <section class="uk-section">
-	<h1>SvelteKit app</h1>
-	<ul class="uk-list">
+	<h1 class="uk-heading-medium">SvelteKit app</h1>
+	<ul class="uk-list uk-list-disc uk-list-primary">
 		<li><a href="/about">Страница о нас</a></li>
 		<li><a href="/forms">Работа Form в Sveltekit</a></li>
 		<li><a href="/typer">Анимация - печатная машинка</a></li>
