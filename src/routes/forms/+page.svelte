@@ -32,12 +32,22 @@
 		</div>
 	</form>
 	<h2>Entries:</h2>
-	<ol class="uk-list uk-list-divider">
-		{#each entries as entry}
-			<li>
-				Персона: {entry.name} c email: {entry.email}.<br /> Оставил сообщение:
-				<pre>{entry.message}</pre>
-			</li>
-		{/each}
-	</ol>
+	<table class="uk-table uk-table-divider">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Message</th>
+			</tr>
+		</thead>
+		<tbody>
+			{#each entries as entry}
+				<tr>
+					<td>{entry.name}</td>
+					<td>{entry.email}</td>
+					<td>{entry.message}</td>
+				</tr>
+			{/each}
+		</tbody>
+	</table>
 </section>
