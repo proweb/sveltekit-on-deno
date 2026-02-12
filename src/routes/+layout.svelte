@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { afterNavigate } from '$app/navigation';
 	import UIkit from 'uikit';
 	import Icons from 'uikit/dist/js/uikit-icons';
 	import 'uikit/dist/css/uikit.min.css';
@@ -10,6 +11,9 @@
 
 	onMount(() => {
 		UIkit.use(Icons);
+		afterNavigate(() => {
+			UIkit.offcanvas('#mobile-nav')?.hide();
+		});
 	});
 </script>
 
@@ -52,15 +56,23 @@
 	</main>
 </div>
 
-<div id="mobile-nav" uk-offcanvas="overlay: true">
+<div id="mobile-nav" uk-offcanvas="overlay: true; flip: true">
 	<div class="uk-offcanvas-bar">
 		<button class="uk-offcanvas-close" type="button" uk-close aria-label="Close Menu"></button>
 		<ul class="uk-nav uk-nav-default">
 			<li class="uk-nav-header">Menu</li>
-			<li class={$page.url.pathname === '/' ? 'uk-active' : ''}><a href="/">Home</a></li>
-			<li class={$page.url.pathname === '/about' ? 'uk-active' : ''}><a href="/about">About</a></li>
-			<li class={$page.url.pathname === '/forms' ? 'uk-active' : ''}><a href="/forms">Forms</a></li>
-			<li class={$page.url.pathname === '/typer' ? 'uk-active' : ''}><a href="/typer">Typer</a></li>
+			<li class={$page.url.pathname === '/' ? 'uk-active' : ''}>
+				<a href="/" uk-toggle="target: #mobile-nav">Home</a>
+			</li>
+			<li class={$page.url.pathname === '/about' ? 'uk-active' : ''}>
+				<a href="/about" uk-toggle="target: #mobile-nav">About</a>
+			</li>
+			<li class={$page.url.pathname === '/forms' ? 'uk-active' : ''}>
+				<a href="/forms" uk-toggle="target: #mobile-nav">Forms</a>
+			</li>
+			<li class={$page.url.pathname === '/typer' ? 'uk-active' : ''}>
+				<a href="/typer" uk-toggle="target: #mobile-nav">Typer</a>
+			</li>
 		</ul>
 	</div>
 </div>
