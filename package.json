@@ -1,36 +1,12 @@
 {
-  "name": "sveltekit-on-deno",
-  "version": "1.0.0",
+  "name": "test-verify",
   "type": "module",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
-  },
-  "devDependencies": {
-    "@fontsource/fira-mono": "^5.2.5",
-    "@neoconfetti/svelte": "^2.2.2",
-    "@sveltejs/adapter-auto": "^3.0.0",
-    "@sveltejs/kit": "^2.0.0",
-    "@sveltejs/vite-plugin-svelte": "^3.0.0",
-    "@types/node": "^22.13.14",
-    "@typescript-eslint/eslint-plugin": "^8.28.0",
-    "@typescript-eslint/parser": "^8.28.0",
-    "eslint": "^9.23.0",
-    "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-svelte": "^3.3.3",
-    "prettier": "^3.5.3",
-    "prettier-plugin-svelte": "^3.3.3",
-    "svelte": "^5.0.0",
-    "svelte-check": "^4.1.5",
-    "tslib": "^2.8.1",
-    "typescript": "^5.8.3",
-    "uikit": "^3.23.4",
-    "vite": "^6.3.0",
-    "vitest": "^3.1.1"
-  },
   "dependencies": {
-    "sveltekit-adapter-deno": "^0.16.1"
+    "uikit": "^3.23.4",
+    "sveltekit-adapter-deno": "^0.16.1",
+    "@sveltejs/kit": "^2.20.2",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "svelte": "^5.25.3",
+    "vite": "^6.3.0"
   }
 }
