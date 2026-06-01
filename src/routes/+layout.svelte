@@ -27,15 +27,15 @@
 				<div class="uk-navbar-right">
 					<ul class="uk-navbar-nav uk-visible@m">
 						<li class={$page.url.pathname === '/' ? 'uk-active' : ''}><a href="/">Home</a></li>
-						<li class={$page.url.pathname === '/about' ? 'uk-active' : ''}><a href="/about"
-								>About</a
-							></li>
-						<li class={$page.url.pathname === '/forms' ? 'uk-active' : ''}><a href="/forms"
-								>Forms</a
-							></li>
-						<li class={$page.url.pathname === '/typer' ? 'uk-active' : ''}><a href="/typer"
-								>Typer</a
-							></li>
+						<li class={$page.url.pathname === '/about' ? 'uk-active' : ''}>
+							<a href="/about">About</a>
+						</li>
+						<li class={$page.url.pathname === '/forms' ? 'uk-active' : ''}>
+							<a href="/forms">Forms</a>
+						</li>
+						<li class={$page.url.pathname === '/typer' ? 'uk-active' : ''}>
+							<a href="/typer">Typer</a>
+						</li>
 					</ul>
 					<a
 						class="uk-navbar-toggle uk-hidden@m"
