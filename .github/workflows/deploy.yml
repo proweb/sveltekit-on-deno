@@ -28,6 +28,7 @@ jobs:
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
+        if: github.event_name == 'push' && github.repository == 'proweb/sveltekit-on-deno'
         with:
           project: 'svapp'
           entrypoint: 'mod.ts'
