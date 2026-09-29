@@ -1,11 +1,12 @@
 {
-	"name": "sveltekit-deno-app",
+	"name": "sveltekit-node-app",
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"start": "PORT=9000 node build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"test": "vitest",
 		"lint": "eslint . && prettier --check .",
@@ -14,8 +15,8 @@
 	"dependencies": {
 		"@fontsource/fira-mono": "^5.3.0",
 		"@sveltejs/adapter-auto": "^7.0.1",
+		"@sveltejs/adapter-node": "^5.2.12",
 		"svelte": "^5.57.1",
-		"sveltekit-adapter-deno": "^0.16.1",
 		"uikit": "^3.25.25"
 	},
 	"devDependencies": {
