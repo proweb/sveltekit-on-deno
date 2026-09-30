@@ -41,7 +41,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{#each entries as entry (entry.email + entry.message)}
+			{#each entries as entry (entry.id)}
 				<tr>
 					<td>{entry.name}</td>
 					<td>{entry.email}</td>

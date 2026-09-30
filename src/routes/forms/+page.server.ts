@@ -1,14 +1,16 @@
-// deno-lint-ignore no-sloppy-imports
 import type { Actions, PageServerLoad } from './$types';
 
 interface Entry {
+	id: string;
 	name: string;
 	email: string;
 	message: string;
 	timestamp?: Date;
 }
 
-const entries: Entry[] = [{ name: 'first', email: 'test', message: 'test' }];
+const entries: Entry[] = [
+	{ id: crypto.randomUUID(), name: 'first', email: 'test', message: 'test' }
+];
 
 export const load: PageServerLoad = () => {
 	return {
@@ -25,6 +27,7 @@ export const actions: Actions = {
 
 		if (name && message) {
 			const newEntry: Entry = {
+				id: crypto.randomUUID(),
 				name,
 				email,
 				message,
