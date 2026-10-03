@@ -10,7 +10,9 @@
 
 	let { children } = $props();
 
-	afterNavigate(() => {
+	afterNavigate(({ shallow }) => {
+		if (shallow) return;
+
 		UIkit.offcanvas('#mobile-nav')?.hide();
 	});
 
@@ -28,17 +30,17 @@
 				</div>
 				<div class="uk-navbar-right">
 					<ul class="uk-navbar-nav uk-visible@m">
-						<li class={page.url.pathname === resolve('/') ? 'uk-active' : ''}>
+						<li class={page.route.id === '/' ? 'uk-active' : ''}>
 							<a href={resolve('/')}>Home</a>
 						</li>
-						<li class={page.url.pathname === resolve('/about') ? 'uk-active' : ''}>
-							<a href={resolve('/about')}>About</a>
+						<li class={page.route.id === '/about' ? 'uk-active' : ''}>
+							<a href={resolve('about')}>About</a>
 						</li>
-						<li class={page.url.pathname === resolve('/forms') ? 'uk-active' : ''}>
-							<a href={resolve('/forms')}>Forms</a>
+						<li class={page.route.id === '/forms' ? 'uk-active' : ''}>
+							<a href={resolve('forms')}>Forms</a>
 						</li>
-						<li class={page.url.pathname === resolve('/typer') ? 'uk-active' : ''}>
-							<a href={resolve('/typer')}>Typer</a>
+						<li class={page.route.id === '/typer' ? 'uk-active' : ''}>
+							<a href={resolve('typer')}>Typer</a>
 						</li>
 					</ul>
 					<a
@@ -65,17 +67,17 @@
 		<button class="uk-offcanvas-close" type="button" uk-close aria-label="Close Menu"></button>
 		<ul class="uk-nav uk-nav-default">
 			<li class="uk-nav-header">Menu</li>
-			<li class={page.url.pathname === resolve('/') ? 'uk-active' : ''}>
+			<li class={page.route.id === '/' ? 'uk-active' : ''}>
 				<a href={resolve('/')} uk-toggle="target: #mobile-nav">Home</a>
 			</li>
-			<li class={page.url.pathname === resolve('/about') ? 'uk-active' : ''}>
-				<a href={resolve('/about')} uk-toggle="target: #mobile-nav">About</a>
+			<li class={page.route.id === '/about' ? 'uk-active' : ''}>
+				<a href={resolve('about')} uk-toggle="target: #mobile-nav">About</a>
 			</li>
-			<li class={page.url.pathname === resolve('/forms') ? 'uk-active' : ''}>
-				<a href={resolve('/forms')} uk-toggle="target: #mobile-nav">Forms</a>
+			<li class={page.route.id === '/forms' ? 'uk-active' : ''}>
+				<a href={resolve('forms')} uk-toggle="target: #mobile-nav">Forms</a>
 			</li>
-			<li class={page.url.pathname === resolve('/typer') ? 'uk-active' : ''}>
-				<a href={resolve('/typer')} uk-toggle="target: #mobile-nav">Typer</a>
+			<li class={page.route.id === '/typer' ? 'uk-active' : ''}>
+				<a href={resolve('typer')} uk-toggle="target: #mobile-nav">Typer</a>
 			</li>
 		</ul>
 	</div>
