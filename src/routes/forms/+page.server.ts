@@ -1,15 +1,22 @@
+import { fail } from '@sveltejs/kit';
+import { validateEntry, type EntryInput } from '#lib/entry.js';
 import type { Actions, PageServerLoad } from './$types';
 
-interface Entry {
+interface Entry extends EntryInput {
 	id: string;
-	name: string;
-	email: string;
-	message: string;
-	timestamp?: Date;
+	timestamp: Date;
 }
 
+// Process-global demo state: shared by every visitor and lost on restart. Replace it with a real
+// store before relying on it for anything user-specific.
 const entries: Entry[] = [
-	{ id: crypto.randomUUID(), name: 'first', email: 'test', message: 'test' }
+	{
+		id: crypto.randomUUID(),
+		name: 'first',
+		email: 'test',
+		message: 'test',
+		timestamp: new Date()
+	}
 ];
 
 export const load: PageServerLoad = () => {
@@ -21,21 +28,14 @@ export const load: PageServerLoad = () => {
 export const actions: Actions = {
 	addEntry: async ({ request }) => {
 		const formData = await request.formData();
-		const name = formData.get('name') as string;
-		const email = formData.get('email') as string;
-		const message = formData.get('message') as string;
+		const { data, errors } = validateEntry(formData);
 
-		if (name && message) {
-			const newEntry: Entry = {
-				id: crypto.randomUUID(),
-				name,
-				email,
-				message,
-				timestamp: new Date()
-			};
-			entries.push(newEntry);
+		if (Object.keys(errors).length > 0) {
+			return fail(400, { success: false, errors });
 		}
 
-		return { success: true };
+		entries.push({ id: crypto.randomUUID(), ...data, timestamp: new Date() });
+
+		return { success: true, errors };
 	}
 };
