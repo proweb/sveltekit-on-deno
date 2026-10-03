@@ -42,16 +42,17 @@
 	<title>Typer Effect</title>
 </svelte:head>
 
-<section class="uk-section">
-	<h1 class="uk-heading-medium">Typewriter Effect</h1>
-	<p class="uk-tex-lead uk-text-center">Эффект печатной машинки</p>
+<section class="custom-section">
+	<h1>Typewriter Effect</h1>
+	<p class="custom-lead">Эффект печатной машинки</p>
 
-	<div class="uk-placeholder">
-		<p class="uk-h3" style="min-height: 10em;">
+	<div class="custom-placeholder">
+		<p class="custom-h3" style="min-height: 10em;">
 			{displayText}
 		</p>
 	</div>
 
-	<button class="uk-button uk-button-primary uk-align-center" onclick={TextForTyping}>START!</button
-	>
+	<button class="pure-button pure-button-primary custom-centered" onclick={TextForTyping}>
+		START!
+	</button>
 </section>

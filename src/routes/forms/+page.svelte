@@ -12,60 +12,61 @@
 	<meta name="description" content="Обработка форм" />
 </svelte:head>
 
-<section class="uk-section">
+<section class="custom-section">
 	<h1>Формы в Sveltekit</h1>
 
-	<form class="uk-form" method="POST" action="?/addEntry" use:enhance>
-		<div class="uk-margin">
-			<label for="name" class="uk-form-label">Ваше имя:</label>
-			<input
-				type="text"
-				name="name"
-				id="name"
-				class="uk-input"
-				class:uk-form-danger={!!form?.errors.name}
-				aria-invalid={!!form?.errors.name}
-				required
-			/>
-			{#if form?.errors.name}
-				<p class="uk-text-danger uk-margin-small-top">{form.errors.name}</p>
-			{/if}
-		</div>
-		<div class="uk-margin">
-			<label for="email" class="uk-form-label">Email:</label>
-			<input
-				type="email"
-				name="email"
-				id="email"
-				class="uk-input"
-				class:uk-form-danger={!!form?.errors.email}
-				aria-invalid={!!form?.errors.email}
-				required
-			/>
-			{#if form?.errors.email}
-				<p class="uk-text-danger uk-margin-small-top">{form.errors.email}</p>
-			{/if}
-		</div>
-		<div class="uk-margin">
-			<label for="message" class="uk-form-label">Что хотите сказать:</label>
-			<textarea
-				name="message"
-				id="message"
-				class="uk-textarea"
-				class:uk-form-danger={!!form?.errors.message}
-				aria-invalid={!!form?.errors.message}
-				required
-				rows="10"></textarea>
-			{#if form?.errors.message}
-				<p class="uk-text-danger uk-margin-small-top">{form.errors.message}</p>
-			{/if}
-		</div>
-		<div class="uk-margin">
-			<button type="submit" class="uk-button uk-button-primary">Отправить</button>
-		</div>
+	<form class="pure-form pure-form-stacked" method="POST" action="?/addEntry" use:enhance>
+		<fieldset>
+			<div class="custom-field">
+				<label for="name">Ваше имя:</label>
+				<input
+					type="text"
+					name="name"
+					id="name"
+					class="pure-input-1"
+					class:custom-input-error={!!form?.errors.name}
+					aria-invalid={!!form?.errors.name}
+					required
+				/>
+				{#if form?.errors.name}
+					<p class="custom-text-danger">{form.errors.name}</p>
+				{/if}
+			</div>
+			<div class="custom-field">
+				<label for="email">Email:</label>
+				<input
+					type="email"
+					name="email"
+					id="email"
+					class="pure-input-1"
+					class:custom-input-error={!!form?.errors.email}
+					aria-invalid={!!form?.errors.email}
+					required
+				/>
+				{#if form?.errors.email}
+					<p class="custom-text-danger">{form.errors.email}</p>
+				{/if}
+			</div>
+			<div class="custom-field">
+				<label for="message">Что хотите сказать:</label>
+				<textarea
+					name="message"
+					id="message"
+					class="pure-input-1"
+					class:custom-input-error={!!form?.errors.message}
+					aria-invalid={!!form?.errors.message}
+					required
+					rows="10"></textarea>
+				{#if form?.errors.message}
+					<p class="custom-text-danger">{form.errors.message}</p>
+				{/if}
+			</div>
+			<button type="submit" class="pure-button pure-button-primary">Отправить</button>
+		</fieldset>
 	</form>
+
 	<h2>Entries:</h2>
-	<table class="uk-table uk-table-divider">
+	<table class="pure-table pure-table-striped">
 		<thead>
 			<tr>
 				<th>Name</th>

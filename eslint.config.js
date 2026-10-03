@@ -30,12 +30,5 @@ export default defineConfig(
 				parser: ts.parser
 			}
 		}
-	},
-	{
-		// `HTMLAttributes<T>` mirrors Svelte's own signature, so `T` cannot be omitted here.
-		files: ['src/app.d.ts'],
-		rules: {
-			'@typescript-eslint/no-unused-vars': 'off'
-		}
 	}
 );
