@@ -37,10 +37,5 @@ export default defineConfig(
 		rules: {
 			'@typescript-eslint/no-unused-vars': 'off'
 		}
-	},
-	{
-		// Override or add rule settings here, such as:
-		// 'svelte/button-has-type': 'error'
-		rules: {}
 	}
 );
