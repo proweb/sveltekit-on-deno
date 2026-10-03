@@ -10,30 +10,46 @@ Build the application:
 npm run build
 ```
 
-Start the Node.js server (runs on port 9000 by default):
+Start the Node.js server:
 
 ```bash
-node build
+npm start             # port 9000
+PORT=3000 node build  # any other port; adapter-node defaults to 3000
 ```
 
-### Behind a reverse proxy
+### Deriving the request origin
 
-`@sveltejs/adapter-node` derives the request origin from proxy headers. Set them so that SvelteKit
-can build correct URLs and pass its CSRF origin check:
+HTTP carries no reliable information about the URL that was requested, so `@sveltejs/adapter-node`
+falls back to the `https` protocol. When the app is reached directly over plain HTTP, `url.origin`
+will not match the browser's `Origin` header and form submissions fail with
+`403 Cross-site POST form submissions are forbidden`.
+
+**Behind a reverse proxy** — forward the original protocol and host:
 
 ```bash
 PROTOCOL_HEADER=x-forwarded-proto HOST_HEADER=x-forwarded-host node build
 ```
 
-### Without a reverse proxy (plain HTTP)
+Only set these when the server really is behind a trusted reverse proxy, otherwise clients can
+spoof them.
 
-When the server is reached directly over plain HTTP, `adapter-node` assumes `https`. As a result
-`url.origin` does not match the browser's `Origin` header and form submissions fail with
-`403 Cross-site POST form submissions are forbidden`. Set `ORIGIN` explicitly:
+**Without a reverse proxy** — declare the origin in `vite.config.ts`:
+
+```ts
+sveltekit({
+	adapter: adapter(),
+	paths: { origin: process.env.ORIGIN }
+});
+```
 
 ```bash
-ORIGIN=http://localhost:9000 node build
+ORIGIN=http://localhost:9000 npm run build
+npm start
 ```
+
+`paths.origin` is inlined during `npm run build`, so `ORIGIN` must be set at build time — setting it
+only on the `node build` command has no effect. Earlier versions of SvelteKit read `ORIGIN`
+directly at runtime; that environment variable no longer exists in SvelteKit 3.
 
 ## Development
 
