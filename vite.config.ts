@@ -16,13 +16,15 @@ export default defineConfig({
 	test: {
 		expect: { requireAssertions: true },
 		projects: [
+			// Unit tests only. Component tests need a second project running in a real browser —
+			// the `client` project that `sv add vitest` generates — otherwise a `*.svelte.spec.ts`
+			// file would silently never run.
 			{
 				extends: './vite.config.ts',
 				test: {
 					name: 'server',
 					environment: 'node',
-					include: ['src/**/*.{test,spec}.{js,ts}'],
-					exclude: ['src/**/*.svelte.{test,spec}.{js,ts}']
+					include: ['src/**/*.{test,spec}.{js,ts}']
 				}
 			}
 		]
